@@ -9,7 +9,7 @@
     android:background="#A8BF55">
 
     <TextView
-        android:id="@+id/rowDictionary_textView_english"
+        android:id="@+id/textView_rowDictionary_english"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/rowDictionary_textView_persian"
+        android:id="@+id/textView_rowDictionary_persian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
