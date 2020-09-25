@@ -1,7 +1,10 @@
 package com.example.dictionary.controller.fragment;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
@@ -15,6 +18,8 @@ import com.example.dictionary.R;
 import com.example.dictionary.model.Word;
 import com.example.dictionary.repository.DictionaryRepository;
 
+import java.util.Calendar;
+
 public class AddWordFragment extends DialogFragment {
 
     //region defind variable
@@ -25,8 +30,8 @@ public class AddWordFragment extends DialogFragment {
     EditText mEditTextPersian;
 
     DictionaryRepository mRepository;
-    //endregion
 
+    //endregion
 
     public static AddWordFragment newInstance() {
         AddWordFragment fragment = new AddWordFragment();
@@ -38,6 +43,7 @@ public class AddWordFragment extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         mRepository=DictionaryRepository.getInstance(getContext());
     }
 
@@ -51,6 +57,17 @@ public class AddWordFragment extends DialogFragment {
         return view;
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+
     private void setListners() {
         mButtonSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +75,9 @@ public class AddWordFragment extends DialogFragment {
                 Word word=new Word(mEditTextEnglish.getText().toString(),
                         mEditTextPersian.getText().toString());
                 mRepository.insert(word);
+                Intent intent =new Intent();
+                ListWrodFragment fragment=(ListWrodFragment) getTargetFragment();
+                fragment.refList("");
                 getDialog().dismiss();
             }
         });
@@ -66,6 +86,7 @@ public class AddWordFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
                 getDialog().dismiss();
+
             }
         });
     }
@@ -77,4 +98,5 @@ public class AddWordFragment extends DialogFragment {
         mEditTextEnglish=view.findViewById(R.id.editText_fragmentAddWord_english);
         mEditTextPersian=view.findViewById(R.id.editText_fragmentAddWord_persian);
     }
+
 }

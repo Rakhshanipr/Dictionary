@@ -35,4 +35,43 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton_rowDictionary_delete"
+        android:layout_width="57dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="100dp"
+        android:background="@color/cardview_shadow_end_color"
+        android:backgroundTint="#FFFFFF"
+        android:scaleType="fitEnd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_delete"
+        tools:srcCompat="@android:drawable/ic_menu_delete" />
+
+    <ImageButton
+        android:id="@+id/imageButton_rowDictionary_edit"
+        android:layout_width="52dp"
+        android:layout_height="51dp"
+        android:background="@color/cardview_shadow_end_color"
+        android:backgroundTint="#FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton_rowDictionary_share"
+        app:layout_constraintStart_toEndOf="@+id/imageButton_rowDictionary_delete"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <ImageButton
+        android:id="@+id/imageButton_rowDictionary_share"
+        android:layout_width="50dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="120dp"
+        android:background="@color/cardview_shadow_end_color"
+        android:scaleType="fitEnd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_share" />
 </androidx.constraintlayout.widget.ConstraintLayout>

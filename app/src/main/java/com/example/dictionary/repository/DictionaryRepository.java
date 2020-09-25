@@ -67,9 +67,10 @@ public class DictionaryRepository implements IRepository<Word> {
     @Override
     public List<Word> getLists(String search) {
         List<Word> list = new ArrayList<>();
-        String selection = DictionaryDBSchema.WordTable.COLS.ENGLISH + " like '' or " + DictionaryDBSchema.WordTable.COLS.PERSIAN + " like ''";
-        String[] selectionArgs = {};
-        WordCursorWrapper cursorWrapper = queryWord(selection, selectionArgs);
+        String selection = DictionaryDBSchema.WordTable.COLS.ENGLISH + " like '%"+search+"%' or "
+                + DictionaryDBSchema.WordTable.COLS.PERSIAN + " like '%"+search+"%'";
+        String[] selectionArgs = {search, search};
+        WordCursorWrapper cursorWrapper = queryWord(selection, null);
         if (cursorWrapper == null || cursorWrapper.getColumnCount() == 0)
             return null;
         try {
@@ -95,7 +96,8 @@ public class DictionaryRepository implements IRepository<Word> {
 
     @Override
     public void insert(Word word) {
-        mDatabase.insert(DictionaryDBSchema.WordTable.NAME, null, getContentValueFromWrod(word));
+        mDatabase.insert(DictionaryDBSchema.WordTable.NAME, null,
+                getContentValueFromWrod(word));
     }
 
 
@@ -119,7 +121,7 @@ public class DictionaryRepository implements IRepository<Word> {
                 , null
                 , null
                 , null);
-
+        int i = cursor.getColumnCount();
         return new WordCursorWrapper(cursor);
 
     }

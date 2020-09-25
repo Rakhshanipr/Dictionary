@@ -7,10 +7,11 @@ import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 
 import com.example.dictionary.R;
+import com.example.dictionary.controller.fragment.AddWordFragment;
 import com.example.dictionary.controller.fragment.ListWrodFragment;
 import com.example.dictionary.controller.fragment.SearchFragment;
 
-public class ViewWordsActivity extends AppCompatActivity {
+public class ViewWordsActivity extends AppCompatActivity implements SearchFragment.ICallbacks {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,4 +26,17 @@ public class ViewWordsActivity extends AppCompatActivity {
                     .commit();
         }
     }
+
+    @Override
+    public void changeSearchText(String search) {
+        ListWrodFragment listWrodFragment= (ListWrodFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.container_list);
+        listWrodFragment.refList(search);
+
+    }
+
+//    @Override
+//    public void refListOfWord() {
+//
+//    }
 }
